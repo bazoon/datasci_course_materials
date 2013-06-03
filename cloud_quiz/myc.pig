@@ -1,6 +1,6 @@
 register s3n://uw-cse-344-oregon.aws.amazon.com/myudfs.jar
 -- raw = LOAD 'uw-cse-344-oregon.aws.amazon.com/btc-2010-chunk-000' USING TextLoader as (line:chararray);
-raw = LOAD 's3n://uw-cse-344-oregon.aws.amazon.com/cse344-test-file'
+raw = LOAD 's3n://uw-cse-344-oregon.aws.amazon.com/cse344-test-file';
 
 ntriples = foreach raw generate FLATTEN(myudfs.RDFSplit3(line)) as (subject:chararray,predicate:chararray,object:chararray);
 subjects = group ntriples by (subject);
